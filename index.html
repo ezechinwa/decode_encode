@@ -1,0 +1,42 @@
+<html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+ <script>
+
+     //Hashing the frontend SignUP Endpoint
+
+
+     //Step 1
+     //Collect the details such as  password, email, fullname , key
+
+     let unhashed_variables =
+         { email : "williams@gmail.com", password: "mysecret_password", fullname:  "Williams C", key: "this_is_hardcorded_and_hidden_from_users" }
+
+
+     //Step 2
+     // Convert Array to string
+
+     let unhashed_variables_to_string = unhashed_variables.toString();
+     // var encrypted_string = CryptoJS.AES.encrypt($unhashed_variables_to_string, "Secret_Passphrase");
+     var encrypted_string =  btoa(unhashed_variables_to_string);
+     console.log("encrypted_string",encrypted_string);
+
+
+     //Step 4
+     //Make API call to the new endpoint passing only the encrypted_string
+     // axios.post('/new_signup_endpoint',[
+     //         "key"," encrypted_string"
+     // ])
+
+
+     //Step 5.
+     //Micheal receives the key and decode the key value
+     var decodedStringAtoB = atob(encrypted_string);
+     //check the key passed matches this agreed key
+    // in this case  -> this_is_hardcorded_and_hidden_from_users
+
+
+
+ </script>
+</html>
